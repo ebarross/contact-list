@@ -31,6 +31,7 @@ const setup = ({
       loading={loading}
       actionLoading={actionLoading}
       onSubmit={jest.fn()}
+      onGoBack={jest.fn()}
     />
   );
 };
@@ -51,13 +52,17 @@ describe('ContactForm component', () => {
 
   it('should render button for creating contact when data is not passed by props', () => {
     setup({});
-    expect(screen.getByRole('button')).toHaveTextContent('Cadastrar');
+    expect(
+      screen.getByRole('button', { name: /Cadastrar/i })
+    ).toBeInTheDocument();
   });
 
   it('should render button for updating contact when data is passed by props', () => {
     const data = mockContact();
     setup({ data });
-    expect(screen.getByRole('button')).toHaveTextContent('Atualizar');
+    expect(
+      screen.getByRole('button', { name: /Atualizar/i })
+    ).toBeInTheDocument();
   });
 
   it('should render loader when loading is true', () => {
