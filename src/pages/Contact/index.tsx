@@ -59,6 +59,9 @@ const Contact: React.FC<Props> = ({ match }) => {
           loading={loading}
           actionLoading={actionLoading}
           onSubmit={handleSubmit}
+          onGoBack={() => {
+            history.push('/');
+          }}
         />
       </MContainer>
     </Container>

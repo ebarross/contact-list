@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Button as MButton } from '@material-ui/core';
+import { ArrowLeftSharp } from '@material-ui/icons';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -32,6 +34,7 @@ type Props = {
   loading: boolean;
   actionLoading: boolean;
   onSubmit: (contact: Contact) => void;
+  onGoBack: () => void;
 };
 
 type Inputs = {
@@ -46,6 +49,7 @@ const ContactForm: React.FC<Props> = ({
   loading,
   actionLoading,
   onSubmit,
+  onGoBack,
 }) => {
   const initialValues: Inputs = {
     name: '',
@@ -75,6 +79,14 @@ const ContactForm: React.FC<Props> = ({
   return (
     <Container data-testid="contact-form">
       <FormContent>
+        <MButton
+          type="button"
+          onClick={onGoBack}
+          style={{ width: '85px', marginBottom: '10px' }}
+        >
+          <ArrowLeftSharp fontSize="small" />
+          Voltar
+        </MButton>
         {loading ? (
           <LoaderContainer data-testid="loader">
             <Loader />

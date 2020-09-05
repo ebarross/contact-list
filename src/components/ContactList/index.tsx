@@ -7,18 +7,18 @@ import {
   Paper,
   IconButton,
 } from '@material-ui/core';
-import { Edit, Delete } from '@material-ui/icons';
+import { Edit, Delete, Add } from '@material-ui/icons';
 import React from 'react';
 import { Contact as TContact } from '../../interfaces/contact';
 import {
   Container,
   Header,
   Title,
+  StyledButton,
   StyledTableCell,
   LoaderContainer,
 } from './styles';
 import Loader from '../Loader';
-import Button from '../Button';
 
 type Props = {
   title: string;
@@ -62,7 +62,10 @@ const ContactList: React.FC<Props> = ({
     <Container data-testid="contact-list">
       <Header>
         <Title>{title}</Title>
-        <Button onClick={onAddClick}>Novo contato</Button>
+        <StyledButton onClick={onAddClick}>
+          <Add fontSize="small" />
+          <span>Novo contato</span>
+        </StyledButton>
       </Header>
       {!loading && contacts.length > 0 ? (
         <>

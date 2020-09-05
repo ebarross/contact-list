@@ -9,8 +9,11 @@ export const Title = styled.h1`
 export const FormContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
   margin: 0px auto;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 
 export const ButtonContainer = styled.div`
