@@ -73,10 +73,10 @@ const ContactForm: React.FC<Props> = ({
   }, [data]);
 
   return (
-    <Container>
+    <Container data-testid="contact-form">
       <FormContent>
         {loading ? (
-          <LoaderContainer>
+          <LoaderContainer data-testid="loader">
             <Loader />
           </LoaderContainer>
         ) : (

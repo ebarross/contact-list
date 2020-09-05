@@ -14,7 +14,6 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const [contactToRemove, setContactToRemove] = useState('');
-
   const { setData, getData, remove } = useLocalStorage();
 
   const fetchData = useCallback(() => {
@@ -31,7 +30,8 @@ const Home: React.FC = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // eslint-disable-next-line no-alert
+        alert(err.message);
       })
       .finally(() => {
         setLoading(false);

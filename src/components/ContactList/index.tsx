@@ -39,7 +39,7 @@ const ContactList: React.FC<Props> = ({
 }) => {
   const renderContacts = (): React.ReactElement[] => {
     return contacts.map((c) => (
-      <TableRow key={c.cpf}>
+      <TableRow key={c.cpf} data-testid="contact-row">
         <StyledTableCell component="th" scope="row">
           {c.name}
         </StyledTableCell>
@@ -47,10 +47,10 @@ const ContactList: React.FC<Props> = ({
         <StyledTableCell>{c.cpf}</StyledTableCell>
         <StyledTableCell>{c.phone}</StyledTableCell>
         <StyledTableCell>
-          <IconButton onClick={(e) => onEditClick(c.cpf)}>
+          <IconButton onClick={() => onEditClick(c.cpf)}>
             <Edit fontSize="small" />
           </IconButton>
-          <IconButton onClick={(e) => onRemoveClick(c.cpf)}>
+          <IconButton onClick={() => onRemoveClick(c.cpf)}>
             <Delete fontSize="small" />
           </IconButton>
         </StyledTableCell>
@@ -59,28 +59,30 @@ const ContactList: React.FC<Props> = ({
   };
 
   return (
-    <Container>
+    <Container data-testid="contact-list">
       <Header>
         <Title>{title}</Title>
         <Button onClick={onAddClick}>Novo contato</Button>
       </Header>
       {!loading && contacts.length > 0 ? (
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>Nome</StyledTableCell>
-                <StyledTableCell>E-mail</StyledTableCell>
-                <StyledTableCell>CPF</StyledTableCell>
-                <StyledTableCell>Telefone</StyledTableCell>
-                <StyledTableCell>Ações</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>{renderContacts()}</TableBody>
-          </Table>
-        </TableContainer>
+        <>
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Nome</StyledTableCell>
+                  <StyledTableCell>E-mail</StyledTableCell>
+                  <StyledTableCell>CPF</StyledTableCell>
+                  <StyledTableCell>Telefone</StyledTableCell>
+                  <StyledTableCell>Ações</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>{renderContacts()}</TableBody>
+            </Table>
+          </TableContainer>
+        </>
       ) : (
-        <LoaderContainer>
+        <LoaderContainer data-testid="loader">
           <Loader />
         </LoaderContainer>
       )}

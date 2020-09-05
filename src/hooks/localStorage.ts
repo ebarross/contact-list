@@ -1,7 +1,5 @@
 import { Contact } from '../interfaces/contact';
-import LocalStorage from '../data/storage';
-
-const appDataKey = '@tinnova/contacts';
+import LocalStorage from '../state/storage';
 
 type Storage = {
   getData: () => Contact[];
@@ -14,7 +12,7 @@ type Storage = {
 
 export const useLocalStorage = (): Storage => {
   const getData = (): Contact[] => {
-    return LocalStorage.get(appDataKey);
+    return LocalStorage.get();
   };
 
   const getById = (id: string): Contact | undefined => {
@@ -22,7 +20,7 @@ export const useLocalStorage = (): Storage => {
   };
 
   const setData = (contacts: Contact[]): void => {
-    LocalStorage.set(appDataKey, contacts);
+    LocalStorage.set(contacts);
   };
 
   const add = (contact: Contact): void => {

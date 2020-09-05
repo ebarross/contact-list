@@ -14,6 +14,7 @@ export type HttpRequest = {
   queries?: HttpQuery[];
 };
 
+// eslint-disable-next-line no-shadow
 export enum HttpStatusCode {
   OK = 200,
   NO_CONTENT = 204,
