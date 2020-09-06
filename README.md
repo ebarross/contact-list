@@ -13,6 +13,11 @@ This is a simple and intuitive list of contacts. The application shows the conta
 *  Jest + React Testing Library
 *  ESLint + Prettier
 
+## Demo
+
+The live version can be accessed at:
+*  https://contact-listing.netlify.app
+
 ## Getting Started
 
 This is an example of how you can run the project locally.
